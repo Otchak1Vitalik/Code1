@@ -1,0 +1,32 @@
+
+import collections
+
+word = input("Напишіть своє речення:").lower()
+samba = "!@#$%^&*()<,>./\\?|`'~:;[]{}\"₴№_+-=0123456789"\
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ" \
+        "acdefghijklmnopqrstuvwxyz"\
+        " абвгґдеєжзиіїйклмнопрстуфхцчшщьюя"
+mamba = []
+
+word = word.split()
+
+for v in word:
+    for t in samba:
+        if t in v:
+            v = v.replace(t, "")
+            if len(v) > 3:
+                mamba.append(v)
+
+mamba.sort()
+
+for v in mamba:
+    while mamba.count(v) > 1:
+        mamba.remove(v)
+
+guma = "".join(mamba)
+k = collections.Counter(guma)
+for a, b in sorted(k.items()):
+    print("{a}: {b}".format(a=a, b=b))
+
+    for v in mamba:
+        print(v, end="\n")
